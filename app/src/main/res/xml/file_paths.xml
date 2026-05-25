@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Expose cached ZIP files via FileProvider for share intents -->
+    <cache-path name="instasplit_exports" path="exports/"/>
+</paths>
