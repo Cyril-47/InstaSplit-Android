@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -20,11 +22,45 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            val properties = Properties()
+            val localPropertiesFile = rootProject.file("local.properties")
+            if (localPropertiesFile.exists()) {
+                localPropertiesFile.inputStream().use { stream ->
+                    properties.load(stream)
+                }
+            }
+
+            val keystorePath: String? = properties.getProperty("RELEASE_STORE_FILE")
+            val keystorePassword: String? = properties.getProperty("RELEASE_STORE_PASSWORD")
+            val keyAlias: String? = properties.getProperty("RELEASE_KEY_ALIAS")
+            val keyPassword: String? = properties.getProperty("RELEASE_KEY_PASSWORD")
+
+            if (!keystorePath.isNullOrEmpty() &&
+                !keystorePassword.isNullOrEmpty() &&
+                !keyAlias.isNullOrEmpty() &&
+                !keyPassword.isNullOrEmpty()
+            ) {
+                storeFile = file(keystorePath)
+                storePassword = keystorePassword
+                this.keyAlias = keyAlias
+                this.keyPassword = keyPassword
+            } else {
+                val debugConfig = signingConfigs.getByName("debug")
+                storeFile = debugConfig.storeFile
+                storePassword = debugConfig.storePassword
+                this.keyAlias = debugConfig.keyAlias
+                this.keyPassword = debugConfig.keyPassword
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
