@@ -7,6 +7,10 @@
 
 A premium, privacy-first, fully native Android application designed to slice panoramic images into seamless carousels for Instagram. Rebuilt from the ground up matching features of the web PWA version, leveraging native performance, scoped storage, and modern Android design system guidelines.
 
+### 📥 Download Pre-compiled App
+If you just want to install the application on your device, download the pre-compiled, signed release APK directly from the releases page:
+👉 **[Download InstaSplit v1.0.0 APK](https://github.com/Cyril-47/InstaSplit-Android/releases/tag/v1.0.0)**
+
 ---
 
 ## 🌟 Key Features
@@ -62,9 +66,9 @@ app/src/main/java/com/instasplit/app/
 
 ---
 
-## 🚀 Building & Running
+## 🚀 Building & Running (Local Development)
 
-Ensure you have Android SDK installed (matching target SDK 35) and JDK 17 configured.
+The instructions below explain how to compile the project **locally on your own machine** (which will generate the local `build` output directories). Ensure you have Android SDK installed (matching target SDK 35) and JDK 17 configured.
 
 ### Run Unit Tests
 To execute all local unit tests (including Robolectric crop calculations and auto-fit tests):
