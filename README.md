@@ -1,6 +1,6 @@
 # InstaSplit Android 📱✨
 
-[![Android CI/CD](https://github.com/com.instasplit.app/actions/workflows/android.yml/badge.svg)](#)
+[![Android CI/CD](https://github.com/Cyril-47/InstaSplit-Android/actions/workflows/android.yml/badge.svg)](https://github.com/Cyril-47/InstaSplit-Android/actions/workflows/android.yml)
 ![Size](https://img.shields.io/badge/APK%20Size-1.8%20MB-success)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blue?logo=kotlin)
 ![Compose](https://img.shields.io/badge/Jetpack%20Compose-Modern-orange?logo=jetpackcompose)
